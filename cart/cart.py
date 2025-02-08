@@ -60,4 +60,12 @@ class Cart():
         test = self.cart
         return test
 
+    def delete(self, product):
+        product_id = str(product) # {'4' : 2}
+        #delete from dictionary
+        if product_id in self.cart:
+            del self.cart[product_id]
+
+        self.session.modified = True
+
 
