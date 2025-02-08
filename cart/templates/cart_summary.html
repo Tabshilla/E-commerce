@@ -1,9 +1,10 @@
 <h1>cart summary</h1>
 {% extends 'base.html' %}
 
-{% load static %}
+
 
 {% block content %}
+
 <!-- Header-->
 <header class="bg-dark py-5">
   <div class="container px-4 px-lg-5 my-5">
@@ -15,9 +16,10 @@
 </header>
 <br />
 <div class="container">
-  {% for product in cart_products %}
-  <div class="container">
-    <br />
+    {% if cart_products %}
+        {% for product in cart_products %}
+  <!-- <div class="container">
+    <br /> -->
     <div class="card mb-3">
       <div class="row g-0">
         <div class="col-md-4">
@@ -65,17 +67,21 @@
               <a href="{% url 'home' %}" class="btn btn-secondary">Home</a>
               <button type="button" data-index="{{product.id}}" class="btn btn-secondary update-cart">Update</button>
               <button type="button" data-index="{{product.id}}" class="btn btn-danger delete-product">Remove</button>
-              <!-- <button type="button" value="{{ product.id}}" class="btn btn-secondary" id="add-cart">Add to Cart</button> -->
-            </center>
+              
           </div>
         </div>
       </div>
     </div>
   </div><br />
   {% endfor %}
-</div>
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+  <h3>Total:${{ totals }}</h3>
+  <br /><br /><br />
+  {% else %}
+  There's Nothing in your cart
 
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+  {% endif %}
+</div>
 
 <script>
     // update cart
